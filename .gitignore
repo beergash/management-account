@@ -1,0 +1,9 @@
+/target/
+/bin/
+src/main/resources/swagger.yaml
+/.idea
+*.iml
+/src/main/resources/application.properties
+/.settings
+/sonar-report/*
+.classpath
