@@ -12,7 +12,7 @@ public abstract class AbstractAccountsService {
     @Value("${fabrick.server.apiKey}")
     private String apiKey;
 
-    public HttpHeaders createAuthHeaders() {
+    protected HttpHeaders createAuthHeaders() {
         HttpHeaders headers = new HttpHeaders();
         headers.set(ApplicationConstants.API_KEY_HEADER_NAME, apiKey);
         headers.set(ApplicationConstants.AUTH_SCHEMA_HEADER_NAME, authSchema);

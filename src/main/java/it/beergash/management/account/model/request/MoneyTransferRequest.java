@@ -4,27 +4,30 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import it.beergash.management.account.model.Creditor;
 import it.beergash.management.account.model.TaxRelief;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
 public class MoneyTransferRequest {
 
-    @NotNull
+    @Valid
+    @NotNull(message = "creditor must not be null")
     private Creditor creditor;
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private Date executionDate;
     private String uri;
-    @NotBlank
+    @NotBlank(message = "description must not be null")
     private String description;
-    @NotNull
+    @NotNull(message = "amount must not be null")
     private Double amount;
-    @NotBlank
+    @NotBlank(message = "currency must not be null")
     private String currency;
     private boolean isUrgent;
     private boolean isInstant;
     private String feeType;
     private String feeAccountId;
+    @Valid
     private TaxRelief taxRelief;
 
     public Creditor getCreditor() {

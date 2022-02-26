@@ -4,7 +4,7 @@ public class FabrickErrorModel {
 
     private String code;
     private String description;
-    private String param;
+    private String params;
 
     public String getCode() {
         return code;
@@ -22,11 +22,11 @@ public class FabrickErrorModel {
         this.description = description;
     }
 
-    public String getParam() {
-        return param;
+    public String getParams() {
+        return params;
     }
 
-    public void setParam(String param) {
-        this.param = param;
+    public void setParams(String params) {
+        this.params = params;
     }
 }

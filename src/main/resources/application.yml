@@ -2,6 +2,6 @@ fabrick:
   server:
     listAccountsUrl: https://sandbox.platfr.io/api/gbs/banking/v4.0/accounts/
     transferOperationUrl: https://sandbox.platfr.io/api/gbs/banking/v4.0/accounts/{accountId}/payments/money-transfers
-    getTransactionsUrl: https://sandbox.platfr.io/api/gbs/banking/v4.0/accounts/{accountId}/transactions
+    listTransactionsUrl: https://sandbox.platfr.io/api/gbs/banking/v4.0/accounts/{accountId}/transactions
     apiKey: FXOVVXXHVCPVPBZXIJOBGUGSKHDNFRRQJP
     authSchema: S2S

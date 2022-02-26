@@ -1,5 +1,6 @@
 package it.beergash.management.account.model;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -7,9 +8,13 @@ public class TaxRelief {
 
     private String taxReliefId;
     private boolean isCondoUpgrade;
-    @NotBlank
+    @NotBlank(message = "creditorFiscalCode must not be null")
     private String creditorFiscalCode;
+    @Valid
+    @NotNull(message = "naturalPersonBeneficiary must not be null")
     private NaturalBeneficiary naturalPersonBeneficiary;
+    @Valid
+    @NotNull(message = "legalPersonBeneficiary must not be null")
     private LegalBeneficiary legalPersonBeneficiary;
 
     public String getTaxReliefId() {

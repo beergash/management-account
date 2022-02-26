@@ -33,8 +33,9 @@ public class MoneyTransferService extends AbstractAccountsService {
     public MoneyTransferResponse executeMoneyTransfer(String accountId, MoneyTransferRequest mtr) {
         HttpHeaders headers = createAuthHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
-        final HttpEntity<MoneyTransferRequest> entity = new HttpEntity<MoneyTransferRequest>(mtr, headers);
-        ResponseEntity<MoneyTransferResponse> result = restTemplate.exchange(transferOperationUrl, HttpMethod.POST, entity, MoneyTransferResponse.class, accountId);
+        headers.set("X-Time-Zone", "Europe/Rome");
+        final HttpEntity<MoneyTransferRequest> entity = new HttpEntity<>(mtr, headers);
+        ResponseEntity<MoneyTransferResponse> result = restTemplate.postForEntity(transferOperationUrl, entity, MoneyTransferResponse.class, accountId);
         if (result.getStatusCode() != HttpStatus.OK) {
             throw new MoneyTransferException(String.format(DEFAULT_ERROR_MESSAGE, accountId));
         }

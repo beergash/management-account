@@ -1,14 +1,16 @@
 package it.beergash.management.account.model;
 
+import javax.validation.Valid;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 public class Creditor {
 
-    @NotBlank
+    @NotBlank(message = "creditor name must not be null")
     private String name;
 
-    @NotNull
+    @Valid
+    @NotNull(message = "creditor account must not be null")
     private CreditorAccount account;
     private Address address;
 

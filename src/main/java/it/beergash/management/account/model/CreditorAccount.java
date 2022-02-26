@@ -4,7 +4,7 @@ import javax.validation.constraints.NotBlank;
 
 public class CreditorAccount {
 
-    @NotBlank
+    @NotBlank(message = "account code must not be empty")
     private String accountCode;
     private String bicCode;
 
