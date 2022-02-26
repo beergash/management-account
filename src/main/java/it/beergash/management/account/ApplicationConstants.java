@@ -1,5 +1,9 @@
 package it.beergash.management.account;
 
+/**
+ * Application constants
+ * @author A.Aresta
+ */
 public class ApplicationConstants {
 
     public static final String AUTH_SCHEMA_HEADER_NAME = "Auth-Schema";

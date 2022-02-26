@@ -8,7 +8,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
-import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.client.RestTemplate;
@@ -17,6 +16,7 @@ import java.util.stream.Collectors;
 
 /**
  * Service to retrieve and manage accounts
+ * @author A.Aresta
  */
 @Service
 public class GetAccountService extends AbstractFabrickClientService {
@@ -29,6 +29,11 @@ public class GetAccountService extends AbstractFabrickClientService {
     @Autowired
     private RestTemplate restTemplate;
 
+    /**
+     * get account by account id
+     * @param accountId
+     * @return
+     */
     public Account getAccount(String accountId) {
         String completeUrl = String.format("%s/%s", listAccountsUrl, accountId);
         HttpHeaders headers = createAuthHeaders();

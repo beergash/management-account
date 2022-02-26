@@ -1,5 +1,9 @@
 package it.beergash.management.account.exception;
 
+/**
+ * Specific exception for money transfer service
+ * @author A.Aresta
+ */
 public class MoneyTransferException extends RuntimeException {
 
     public MoneyTransferException() {

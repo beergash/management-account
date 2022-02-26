@@ -1,5 +1,9 @@
 package it.beergash.management.account.exception;
 
+/**
+ * Generic application exception
+ * @author A.Aresta
+ */
 public class ManagementAccountException extends RuntimeException {
 
     public ManagementAccountException() {

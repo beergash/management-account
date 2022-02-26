@@ -3,9 +3,9 @@ package it.beergash.management.account.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import it.beergash.management.account.model.Account;
+import it.beergash.management.account.model.MoneyTransfer;
 import it.beergash.management.account.model.request.ListTransactionsRequest;
 import it.beergash.management.account.model.request.MoneyTransferRequest;
-import it.beergash.management.account.model.response.MoneyTransferResponse;
 import it.beergash.management.account.model.transaction.Transaction;
 import it.beergash.management.account.service.GetAccountService;
 import it.beergash.management.account.service.ListTransactionsService;
@@ -18,6 +18,10 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+/**
+ * Management Account Rest Api Controller
+ * @author A.Aresta
+ */
 @RestController
 @Api(tags = "ManagementAccountController")
 public class ManagementAccountController {
@@ -40,9 +44,9 @@ public class ManagementAccountController {
 
     @PostMapping(value = "/money-transfer/{accountId}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @ApiOperation(value = "Effettua bonifico", response = Account.class)
-    public ResponseEntity<MoneyTransferResponse> moneyTransfer(@PathVariable String accountId,
-                                                               @Valid @RequestBody MoneyTransferRequest request) {
-        MoneyTransferResponse result = moneyTransferService.executeMoneyTransfer(accountId, request);
+    public ResponseEntity<MoneyTransfer> moneyTransfer(@PathVariable String accountId,
+                                                       @Valid @RequestBody MoneyTransferRequest request) {
+        MoneyTransfer result = moneyTransferService.executeMoneyTransfer(accountId, request);
         return ResponseEntity.ok(result);
     }
 

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 
 import javax.validation.constraints.NotNull;
 
+
 public class ListTransactionsRequest {
 
     @NotNull(message = "Account id must not be null")

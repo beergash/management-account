@@ -2,7 +2,6 @@ package it.beergash.management.account.service;
 
 import it.beergash.management.account.exception.ManagementAccountException;
 import it.beergash.management.account.model.Account;
-import it.beergash.management.account.model.FabrickErrorModel;
 import it.beergash.management.account.model.response.GetAccountResponse;
 import org.junit.Assert;
 import org.junit.Before;
@@ -19,9 +18,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.util.ReflectionTestUtils;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
-import java.util.List;
-
+/**
+ * Test class of service {@link GetAccountService}
+ *
+ * @author A.Aresta
+ */
 @RunWith(MockitoJUnitRunner.class)
 public class GetAccountServiceTest {
 
@@ -40,15 +41,15 @@ public class GetAccountServiceTest {
 
     @Test
     public void testGetAccount() {
-        GetAccountResponse gar = new GetAccountResponse();
+        GetAccountResponse resp = new GetAccountResponse();
         Account account = new Account();
         final String accIdTest = "accountid_test";
         final String currencyTest = "GBP";
         account.setAccountId(accIdTest);
         account.setCurrency(currencyTest);
-        gar.setPayload(account);
+        resp.setPayload(account);
         ResponseEntity<GetAccountResponse> respEntity = ResponseEntity.status(HttpStatus.OK)
-                                                .body(gar);
+                                                .body(resp);
         Mockito.when(restTemplate.exchange(Mockito.anyString(), Mockito.any(HttpMethod.class), Mockito.any(HttpEntity.class), Mockito.any(Class.class)))
                 .thenReturn(respEntity);
         Account result = service.getAccount(accIdTest);

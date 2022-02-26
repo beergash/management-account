@@ -1,6 +1,7 @@
 package it.beergash.management.account.service;
 
 import it.beergash.management.account.exception.MoneyTransferException;
+import it.beergash.management.account.model.MoneyTransfer;
 import it.beergash.management.account.model.request.MoneyTransferRequest;
 import it.beergash.management.account.model.response.MoneyTransferResponse;
 import org.slf4j.Logger;
@@ -13,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  * Service to execute money transfers
+ * @author A.Aresta
  */
 @Service
 public class MoneyTransferService extends AbstractFabrickClientService {
@@ -26,7 +28,13 @@ public class MoneyTransferService extends AbstractFabrickClientService {
     @Autowired
     private RestTemplate restTemplate;
 
-    public MoneyTransferResponse executeMoneyTransfer(String accountId, MoneyTransferRequest mtr) {
+    /**
+     * execute money transfer
+     * @param accountId
+     * @param mtr
+     * @return
+     */
+    public MoneyTransfer executeMoneyTransfer(String accountId, MoneyTransferRequest mtr) {
         HttpHeaders headers = createAuthHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set("X-Time-Zone", "Europe/Rome");
@@ -35,6 +43,6 @@ public class MoneyTransferService extends AbstractFabrickClientService {
         if (result.getStatusCode() != HttpStatus.OK) {
             throw new MoneyTransferException(String.format(DEFAULT_ERROR_MESSAGE, accountId));
         }
-        return result.getBody();
+        return result.getBody().getPayload();
     }
 }

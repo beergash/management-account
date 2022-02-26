@@ -20,6 +20,7 @@ import java.util.stream.Collectors;
 
 /**
  * Service to retrieve transactions
+ * @author A.Aresta
  */
 @Service
 public class ListTransactionsService extends AbstractFabrickClientService {
@@ -32,6 +33,11 @@ public class ListTransactionsService extends AbstractFabrickClientService {
     @Autowired
     private RestTemplate restTemplate;
 
+    /**
+     * get list transactions in a range dates and by account id
+     * @param request
+     * @return
+     */
     public List<Transaction> listTransactions(ListTransactionsRequest request) {
         Objects.requireNonNull(request, "ListTransactionsRequest must not be null");
         String completeUrl = String.format("%s?fromAccountingDate=%s&toAccountingDate=%s", listTransactionsUrl, request.getFromAccountingDate(), request.getToAccountingDate());
