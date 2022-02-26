@@ -1,6 +1,5 @@
 package it.beergash.management.account.service;
 
-import it.beergash.management.account.exception.ManagementAccountException;
 import it.beergash.management.account.exception.MoneyTransferException;
 import it.beergash.management.account.model.request.MoneyTransferRequest;
 import it.beergash.management.account.model.response.MoneyTransferResponse;
@@ -10,16 +9,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.*;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 import org.springframework.web.client.RestTemplate;
-
-import java.util.stream.Collectors;
 
 /**
  * Service to execute money transfers
  */
 @Service
-public class MoneyTransferService extends AbstractAccountsService {
+public class MoneyTransferService extends AbstractFabrickClientService {
 
     private static Logger LOGGER = LoggerFactory.getLogger(MoneyTransferService.class.getName());
     private static final String DEFAULT_ERROR_MESSAGE = "Errore tecnico  La condizione BP049 non e' prevista per il conto id %s";

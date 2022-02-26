@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
  * Service to retrieve and manage accounts
  */
 @Service
-public class GetAccountService extends AbstractAccountsService {
+public class GetAccountService extends AbstractFabrickClientService {
 
     private static Logger LOGGER = LoggerFactory.getLogger(GetAccountService.class.getName());
 
@@ -29,7 +29,6 @@ public class GetAccountService extends AbstractAccountsService {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Async
     public Account getAccount(String accountId) {
         String completeUrl = String.format("%s/%s", listAccountsUrl, accountId);
         HttpHeaders headers = createAuthHeaders();

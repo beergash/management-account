@@ -4,7 +4,7 @@ import it.beergash.management.account.ApplicationConstants;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpHeaders;
 
-public abstract class AbstractAccountsService {
+public abstract class AbstractFabrickClientService {
 
     @Value("${fabrick.server.authSchema}")
     private String authSchema;

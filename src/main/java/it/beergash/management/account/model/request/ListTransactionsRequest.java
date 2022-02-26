@@ -8,10 +8,10 @@ public class ListTransactionsRequest {
 
     @NotNull(message = "Account id must not be null")
     private String accountId;
-    @NotNull(message = "fromAccountingDate id must not be null")
+    @NotNull(message = "fromAccountingDate must not be null")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private String fromAccountingDate;
-    @NotNull(message = "toAccountingDate id must not be null")
+    @NotNull(message = "toAccountingDate must not be null")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private String toAccountingDate;
 

@@ -1,9 +1,7 @@
 package it.beergash.management.account.service;
 
 import it.beergash.management.account.exception.ManagementAccountException;
-import it.beergash.management.account.model.Account;
 import it.beergash.management.account.model.request.ListTransactionsRequest;
-import it.beergash.management.account.model.response.GetAccountResponse;
 import it.beergash.management.account.model.response.ListTransactionsResponse;
 import it.beergash.management.account.model.transaction.Transaction;
 import org.slf4j.Logger;
@@ -24,7 +22,7 @@ import java.util.stream.Collectors;
  * Service to retrieve transactions
  */
 @Service
-public class ListTransactionsService extends AbstractAccountsService {
+public class ListTransactionsService extends AbstractFabrickClientService {
 
     private static Logger LOGGER = LoggerFactory.getLogger(ListTransactionsService.class.getName());
 
@@ -34,7 +32,6 @@ public class ListTransactionsService extends AbstractAccountsService {
     @Autowired
     private RestTemplate restTemplate;
 
-    @Async
     public List<Transaction> listTransactions(ListTransactionsRequest request) {
         Objects.requireNonNull(request, "ListTransactionsRequest must not be null");
         String completeUrl = String.format("%s?fromAccountingDate=%s&toAccountingDate=%s", listTransactionsUrl, request.getFromAccountingDate(), request.getToAccountingDate());
