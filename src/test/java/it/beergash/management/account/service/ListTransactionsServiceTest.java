@@ -9,11 +9,11 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.ArgumentMatchers;
 import org.mockito.InjectMocks;
+import org.mockito.Matchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.runners.MockitoJUnitRunner;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
@@ -59,7 +59,7 @@ public class ListTransactionsServiceTest {
         resp.setPayload(payload);
         ResponseEntity<ListTransactionsResponse> respEntity = ResponseEntity.status(HttpStatus.OK)
                                                 .body(resp);
-        Mockito.when(restTemplate.exchange(Mockito.anyString(), Mockito.any(HttpMethod.class), Mockito.any(HttpEntity.class), Mockito.any(Class.class), ArgumentMatchers.<String>any()))
+        Mockito.when(restTemplate.exchange(Mockito.anyString(), Mockito.any(HttpMethod.class), Mockito.any(HttpEntity.class), Mockito.any(Class.class), Matchers.<String>anyVararg()))
                 .thenReturn(respEntity);
         List<Transaction> result = service.listTransactions(new ListTransactionsRequest());
         Assert.assertNotNull(result);
@@ -72,7 +72,7 @@ public class ListTransactionsServiceTest {
     public void testListTransactionsWithError() {
         ResponseEntity<ListTransactionsResponse> respEntity = ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                 .body(new ListTransactionsResponse());
-        Mockito.when(restTemplate.exchange(Mockito.anyString(), Mockito.any(HttpMethod.class), Mockito.any(HttpEntity.class), Mockito.any(Class.class), ArgumentMatchers.<String>any()))
+        Mockito.when(restTemplate.exchange(Mockito.anyString(), Mockito.any(HttpMethod.class), Mockito.any(HttpEntity.class), Mockito.any(Class.class), Matchers.<String>anyVararg()))
                 .thenReturn(respEntity);
         service.listTransactions(new ListTransactionsRequest());
     }
