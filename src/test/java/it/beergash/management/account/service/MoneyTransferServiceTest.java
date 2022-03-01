@@ -1,7 +1,7 @@
 package it.beergash.management.account.service;
 
 import it.beergash.management.account.exception.MoneyTransferException;
-import it.beergash.management.account.model.MoneyTransfer;
+import it.beergash.management.account.model.moneytransfer.MoneyTransfer;
 import it.beergash.management.account.model.request.MoneyTransferRequest;
 import it.beergash.management.account.model.response.GetAccountResponse;
 import it.beergash.management.account.model.response.MoneyTransferResponse;

@@ -1,6 +1,6 @@
 package it.beergash.management.account.model.response;
 
-import it.beergash.management.account.model.MoneyTransfer;
+import it.beergash.management.account.model.moneytransfer.MoneyTransfer;
 
 public class MoneyTransferResponse extends AbstractFabrickResponse {
 

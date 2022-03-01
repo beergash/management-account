@@ -3,7 +3,7 @@ package it.beergash.management.account.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import it.beergash.management.account.model.Account;
-import it.beergash.management.account.model.MoneyTransfer;
+import it.beergash.management.account.model.moneytransfer.MoneyTransfer;
 import it.beergash.management.account.model.request.ListTransactionsRequest;
 import it.beergash.management.account.model.request.MoneyTransferRequest;
 import it.beergash.management.account.model.transaction.Transaction;
